@@ -9,7 +9,7 @@ import {
 import { ResponseStatus } from "@/app/api/typing.d";
 import { REPLServer } from "repl";
 
-const ifVerifyCode = !!process.env.NEXT_PUBLIC_EMAIL_SERVICE;
+//const ifVerifyCode = !!process.env.NEXT_PUBLIC_EMAIL_SERVICE;
 
 /**
  * Registered user
@@ -28,13 +28,13 @@ export async function POST(req: NextRequest): Promise<Response> {
     }
 
     /* Activation verification code */
-    if (ifVerifyCode) {
+    /*if (ifVerifyCode) {
       const registerCodeLogic = new RegisterCodeLogic();
       const success = await registerCodeLogic.activateCode(email, code.trim());
 
       if (!success)
         return NextResponse.json({ status: ResponseStatus.invalidCode });
-    }
+    }*/
 
     const user = new UserLogic();
     await user.register(email, password);
